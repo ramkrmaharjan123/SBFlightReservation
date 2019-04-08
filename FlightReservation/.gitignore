@@ -1,6 +1,7 @@
 HELP.md
 /target/
 !.mvn/wrapper/maven-wrapper.jar
+/Ram download/
 
 ### STS ###
 .apt_generated
