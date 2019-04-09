@@ -28,7 +28,7 @@
 <td>${flight.departureCity } </td>
 <td>${flight.arrivalCity} </td>
 <td>${flight.estimatedDepartureTime} </td>
-<td><a href="showCompleteReservation?id=${flight.flightId}">Select</a> </td>
+<td><a href="showCompleteReservation?id=${flight.flightid}">Select</a> </td>
 
 </tr>
 </c:forEach>

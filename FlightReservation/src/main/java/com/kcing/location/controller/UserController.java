@@ -23,6 +23,13 @@ public class UserController {
 		return "login/registerUser";
 	}
 	
+	@RequestMapping("/showloginPage")
+	public String showLoginPage() {
+		
+		return "login/login";
+	}
+	
+	
 
 //	@RequestMapping("/registerUser")
 	@RequestMapping(value="/registerUser",method=RequestMethod.POST)

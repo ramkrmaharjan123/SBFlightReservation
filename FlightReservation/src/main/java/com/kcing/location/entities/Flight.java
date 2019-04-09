@@ -22,11 +22,11 @@ public class Flight {
 	private String arrivalCity;
 	private Date dateOfDeparture;
 	private Timestamp estimatedDepartureTime;
-	public long getFlightId() {
+	public long getFlightid() {
 		return flightid;
 	}
-	public void setFlightId(long flight_id) {
-		this.flightid = flight_id;
+	public void setFlightid(long flightid) {
+		this.flightid = flightid;
 	}
 	public String getFlightNumber() {
 		return flightNumber;

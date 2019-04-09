@@ -1,5 +1,6 @@
 package com.kcing.location.entities;
 
+import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
@@ -9,7 +10,8 @@ import javax.persistence.Id;
 public class Passenger {
 	
 	@Id
-	@GeneratedValue(strategy = GenerationType.AUTO)
+	@GeneratedValue(strategy = GenerationType.IDENTITY)
+	@Column(name="PASSENGER_ID")
 	private long userId;
 	private String firstName;
 	private String lastName;
