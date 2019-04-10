@@ -1,9 +1,10 @@
 package com.kcing.flightcheckin.controlller;
 
+import javax.servlet.ServletContext;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.ModelMap;
-import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
@@ -11,12 +12,23 @@ import org.springframework.web.bind.annotation.RequestParam;
 import com.kcing.flightcheckin.integration.ReservationRestClient;
 import com.kcing.flightcheckin.integration.dto.Reservation;
 import com.kcing.flightcheckin.integration.dto.ReservationUpdateRequest;
+import com.kcing.flightcheckin.utilities.EmailUtil;
+import com.kcing.flightcheckin.utilities.PdfGenerator;
 
 @Controller
 public class CheckInController {
 	
 	@Autowired
 	private ReservationRestClient reservationClient;
+	
+	@Autowired
+	private PdfGenerator pdfgeneator;
+	
+	@Autowired
+	private EmailUtil emailUtil;
+	
+	@Autowired
+	private ServletContext sc;
 	
 	@RequestMapping("/showCheckIn")
 	public String showCheckInPage() {
@@ -45,7 +57,11 @@ public class CheckInController {
 		updateRequest.setReservationId(id);
 		updateRequest.setNumOfBags(numOfBags);
 		updateRequest.setCheckedin(true);
-		reservationClient.updateReservationRequest(updateRequest);
+		Reservation r = reservationClient.updateReservationRequest(updateRequest);
+		String path =sc.getRealPath("/")+r.getReservationId()+".pdf";
+		pdfgeneator.generateItinerary(r,path);
+		
+		emailUtil.emailIternary(r.getPassenger().getEmail(), path);
 		return "checkInComplete";
 	}
 	
