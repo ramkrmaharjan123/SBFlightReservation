@@ -22,7 +22,7 @@ public class ReservationRestController {
 		return reservationRepository.getOne(id);
 	}
 	
-	@RequestMapping("/updateReservation")
+	@RequestMapping("/reservations")
 	public Reservation updateReservation(@RequestBody ReservationUpdateRequest request) {
 		
 		Reservation res= reservationRepository.getOne(request.getReservationId());
