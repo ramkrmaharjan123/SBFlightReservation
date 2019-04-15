@@ -2,6 +2,7 @@ package com.kcing.location.service.impl;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 
 import com.kcing.location.dao.FlightRepository;
 import com.kcing.location.dao.PassengerRepository;
@@ -25,6 +26,7 @@ public class ReservationServiceImpl implements ReservationService {
 	private ReservationRepository reservRepository;
 	
 	@Override
+	@Transactional
 	public Reservation bookReservation(ReservationRequest request) {
 		
 		
