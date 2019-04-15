@@ -34,4 +34,10 @@ public class FlightController {
 		return "displayFlights";
 	}
 
+	@RequestMapping(value="/admin/showAddFlights" )
+	public String showAddFlights() {
+		
+		logger.info(">>showAddFlights:");
+		return "addFlights";
+	}
 }
