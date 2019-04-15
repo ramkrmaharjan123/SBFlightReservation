@@ -1,5 +1,7 @@
 package com.kcing.location.controller;
 
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.ModelMap;
@@ -17,8 +19,13 @@ public class UserController {
 	@Autowired
 	private UserRepository userRepository;
 	
+	private static final Logger logger = LoggerFactory.getLogger(UserRepository.class);
+	
+	
 	@RequestMapping("/showReg")
 	public String showRegisterUser() {
+		
+		logger.info(">>showRegisterUser");
 		
 		return "login/registerUser";
 	}
